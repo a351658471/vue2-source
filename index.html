@@ -6,39 +6,42 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app" style="font-size: 16px; color: red">hahsa    hah {{message}} <h2>xii   xi</h2></div>
+    <div id="app" style="font-size: 16px; color: red">
+      hahsa hah {{message}}
+      <h2>xii xi</h2>
+    </div>
     <script src="dist/vue.js"></script>
     <script>
       Vue.Mixin({
-        created:function a(){
-          console.log('aaa')
-        }
-      })
+        created: function a() {
+          console.log("aaa");
+        },
+      });
       Vue.Mixin({
-        created:function b(){
-          console.log('bbb')
-        }
-      })
+        created: function b() {
+          console.log("bbb");
+        },
+      });
       let vm = new Vue({
-        el: '#app',
+        el: "#app",
         data() {
           return {
-            message : 'hello',
+            message: "hello",
             a: {
               b: {},
               c: [1, 2, 3],
             },
-            list: [{id: 1, name: '1'}]
-          }
+            list: [{ id: 1, name: "1" }],
+          };
         },
-        created(){
-          console.log('vmmmmmmm')
+        created() {
+          console.log("vmmmmmmm");
         },
-      })
-      setTimeout(() => {
-        vm.message +='1'
-        vm._updata(vm._render())
-      }, 1000);
+      });
+      // setTimeout(() => {
+      //   vm.message +='1'
+      //   vm._updata(vm._render())
+      // }, 1000);
     </script>
   </body>
 </html>
