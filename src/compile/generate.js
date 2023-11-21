@@ -5,7 +5,6 @@ export default function generate(el) {
   let code = `_c('${el.tagName}',${
     el.attrs.length ? `${genProps(el.attrs)}` : 'null'
   },${children ? `${children}` : 'null'})`
-  console.log("🚀 ~ file: generate.js:9 ~ generate ~ code:", code)
   return code
   
 }
@@ -53,7 +52,6 @@ function gen(node) {
     let match
     while (match = defaultTagRE.exec(text)) {
       let index = match.index
-      console.log('🚀 ~ file: generate.js:51 ~ gen ~ match:', match)
       if (index > lastindex) {
         tokens.push(JSON.stringify(text.slice(lastindex, index)));
       }

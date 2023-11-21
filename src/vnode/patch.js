@@ -1,5 +1,4 @@
 export function patch(oldVnode, vnode){
-    console.log("🚀 ~ file: patch.js:2 ~ patch ~ oldVnode, vnode:", oldVnode, vnode)
     let el = createEl(vnode)
     let body = oldVnode.parentNode
     body.insertBefore(el, oldVnode)

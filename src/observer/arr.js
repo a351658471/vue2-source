@@ -10,7 +10,6 @@ const methods = [
 
 methods.forEach(item => {
   arrayMethods[item] = function(...args ){
-    console.log('数组操作');
     let inserted
     switch (item) {
       case 'push':
