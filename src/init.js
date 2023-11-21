@@ -8,9 +8,11 @@ export default function initMixin(Vue){
   Vue.prototype._init =function(options){
     let vm = this
     vm.$options = mergeOptions(Vue.options, options)
+    //状态初始化之前 调用beforeCreate
     callHook(vm, 'beforeCreate')
     //第一步 初始化状态
     initState(vm)
+    //状态初始化后调用 created
     callHook(vm, 'created')
     //第二步 渲染模板
     if(vm.$options.el){
