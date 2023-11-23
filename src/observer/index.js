@@ -3,7 +3,7 @@ import { Dep } from "./dep"
 
 export default function observer(data){
   if(typeof data != 'object' || data === null)return
-  new Observer(data)
+  return new Observer(data)
 }
 
 class Observer{
@@ -12,6 +12,7 @@ class Observer{
       enumerable:false,
       value:this
     })
+    this.dep = new Dep()
     if(Array.isArray(data)){
       data.__proto__ = arrayMethods
       this.observerArray(data)
@@ -30,17 +31,25 @@ class Observer{
   
   observerArray(arr){
     for(let i=0; i<arr.length; i++){
-      observer(arr[i])
+      let e = arr[i]
+      e && e.__ob__ && e.__ob__.dep.depend();
+      observer(e)
     }
   }
 }
 function defineReactive(data, key, value){
-  observer(value)//深度代理
+  let childDep = observer(value)//深度代理
   let dep = new Dep()
   Object.defineProperty(data,key,{
     get(){
-      console.log('获取');
-      if(Dep.target)dep.depend()
+      console.log('获取',key);
+      if(Dep.target){
+        dep.depend()
+        if(childDep){
+          childDep.dep.depend() //数组收集依赖
+        }
+      }
+     
       return value
     },
     set(newValue){

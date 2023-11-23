@@ -29,7 +29,7 @@ function start({tagName, attrs}){
   stack.push(element)
 }
 function charts(text){
-  // text = text.replace(/\s/g,' ')
+  text = text.replace(/\s+/g,' ')
   if(text){
     createParent.children.push({
       type:3,

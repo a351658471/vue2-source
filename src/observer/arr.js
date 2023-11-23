@@ -10,7 +10,9 @@ const methods = [
 
 methods.forEach(item => {
   arrayMethods[item] = function(...args ){
+    
     let inserted
+    const ob = this.__ob__
     switch (item) {
       case 'push':
       case 'unshift':
@@ -19,9 +21,14 @@ methods.forEach(item => {
       case 'splice':
         inserted = args.splice(2)
         break;
+      default:
+        break;
     }
-    this.__ob__.observerArray(args)
-    return oldArrayProtoMethods[item].apply(this, args)
+    const result = oldArrayProtoMethods[item].apply(this, args)
+    ob.dep.notify()
+    if(inserted)ob.observerArray(inserted)
+    
+    return result
   }
 })
 

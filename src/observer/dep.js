@@ -21,9 +21,12 @@ export class Dep {
 }
 
 Dep.target = null
+const targetStack = []
 export function pushTarget(watcher){
+    targetStack.push(watcher)
     Dep.target = watcher
 }
 export function PopTarget(){
-    Dep.target = null
+    targetStack.pop()
+    Dep.target = targetStack[targetStack.length - 1];
 }
