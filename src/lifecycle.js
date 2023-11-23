@@ -21,9 +21,7 @@ export function lifecycleMixin(Vue) {
 }
 
 export function callHook(vm, hook) {
-  console.log("🚀 ~ file: lifecycle.js:23 ~ callHook ~ hook:", hook);
   const handlers = vm.$options[hook];
-  console.log("🚀 ~ file: lifecycle.js:20 ~ callHook ~ handlers:", handlers);
   if (handlers) {
     handlers.forEach((fn) => {
       fn.call(this);

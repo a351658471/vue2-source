@@ -1,4 +1,5 @@
 import arrayMethods from "./arr"
+import { Dep } from "./dep"
 
 export default function observer(data){
   if(typeof data != 'object' || data === null)return
@@ -35,15 +36,18 @@ class Observer{
 }
 function defineReactive(data, key, value){
   observer(value)//深度代理
+  let dep = new Dep()
   Object.defineProperty(data,key,{
     get(){
       console.log('获取');
+      if(Dep.target)dep.depend()
       return value
     },
     set(newValue){
       if(newValue === value)return 
       observer(newValue)
       value = newValue
+      dep.notify()
     }
   })
 }

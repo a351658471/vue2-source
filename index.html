@@ -27,21 +27,17 @@
         data() {
           return {
             message: "hello",
-            a: {
-              b: {},
-              c: [1, 2, 3],
-            },
-            list: [{ id: 1, name: "1" }],
+            count:1
           };
         },
         created() {
           console.log("vmmmmmmm");
         },
       });
-      // setTimeout(() => {
-      //   vm.message +='1'
-      //   vm._updata(vm._render())
-      // }, 1000);
+      setTimeout(() => {
+        vm.message +='1'
+        vm._updata(vm._render())
+      }, 1000);
     </script>
   </body>
 </html>

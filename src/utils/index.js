@@ -37,7 +37,6 @@ function mergeHook(parentVal, childVal){
 }
 
 export function mergeOptions(parent, child){
-    console.log("🚀 ~ file: index.js:41 ~ mergeOptions ~ this:", this)
     let options = {}
     for(let key in parent){
         mergeField(key)
