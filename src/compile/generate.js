@@ -57,10 +57,10 @@ function gen(node) {
       }
       tokens.push(`_s(${match[1].trim()})`)
       lastindex = index + match[0].length
-      if (lastindex < text.length) {
-        tokens.push(JSON.stringify(text.slice(lastindex)))
-      }
-      return `_v(${tokens.join('+')})`
     }
+    if (lastindex < text.length) {
+      tokens.push(JSON.stringify(text.slice(lastindex)))
+    }
+    return `_v(${tokens.join('+')})`
   }
 }
