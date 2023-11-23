@@ -15,7 +15,7 @@ export const PROTOTYPE = [
     'methods'
 ]
 
-//策略模式
+//合并策略
 let starts = {}
 // const arr = HOOKS.concat(...PROTOTYPE)
 HOOKS.forEach(item => {

@@ -6,6 +6,7 @@ export function mounetComponents(vm, el) {
   callHook(vm, "beforeMount");
   //1、vm.render将render函数变成虚拟dom 2、vm._updata将虚拟dom转为真实dom
   const updateComponent = () => {
+    console.log("🚀 ~ file: lifecycle.js:9 ~ updateComponent ~ updateComponent:")
     vm._updata(vm._render());
   };
   new Watcher(vm, updateComponent, () => {}, true);
