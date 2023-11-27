@@ -10,9 +10,14 @@
       hahsahah{{message}}----{{obj.name}} ----
       <h2>xii xi---{{count}}---</h2>
       <h2>{{arr}}</h2>
+      <child-component></child-component>
+      <parent-component></parent-component>
     </div>
     <script src="dist/vue.js"></script>
     <script>
+      Vue.component('parent-component',{
+        template:`<div>我是全局组件</div>`
+      })
       Vue.Mixin({
         created: function a() {
           console.log("aaa");
@@ -25,6 +30,11 @@
       });
       let vm = new Vue({
         el: "#app",
+        component:{
+          'child-component':{
+            template:`<div>我是局部组件</div>`
+          }
+        },
         data() {
           return {
             message: "hello",

@@ -7,7 +7,9 @@ import { mergeOptions } from "./utils/index"
 export default function initMixin(Vue){
   Vue.prototype._init =function(options){
     let vm = this
-    vm.$options = mergeOptions(Vue.options, options)
+    vm.$options = mergeOptions(vm.constructor.options, options)
+    console.log("🚀 ~ file: init.js:11 ~ initMixin ~ options:", options)
+    console.log("🚀 ~ file: init.js:11 ~ initMixin ~ vm.constructor.options:", vm.constructor.options)
     //状态初始化之前 调用beforeCreate
     callHook(vm, 'beforeCreate')
     //第一步 初始化状态
