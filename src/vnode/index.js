@@ -3,7 +3,7 @@ import { isObject, isReservedTag } from "../utils/index"
 export function renderMixin(Vue){
     //_c 处理元素
     Vue.prototype._c = function(){
-        return createElement(...arguments)
+        return createElement(this, ...arguments)
         
     }
     //_v处理文本
@@ -25,7 +25,6 @@ export function renderMixin(Vue){
 }
 
 function createElement(vm, tag, data ={}, ...children){
-    let key = data.key
     //判断是否是普通标签
     if(isReservedTag(tag))return new Vnode(tag, data, data?.key, children)
     //否则是组件
@@ -41,7 +40,7 @@ export function createComponent(vm, tag, data, key, children, Ctor) {
     // 声明组件自己内部的生命周期
     data.hook = {
       // 组件创建过程的自身初始化方法
-      init(vnode) {
+      init() {
         let child = (vnode.componentInstance = new Ctor({ _isComponent: true })); //实例化组件
         child.$mount(); //因为没有传入el属性  需要手动挂载 为了在组件实例上面增加$el方法可用于生成组件的真实渲染节点
       },

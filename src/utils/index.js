@@ -53,7 +53,7 @@ function mergeAssets(parentVal, childVal){
 }
 
 
-export function mergeOptions(parent, child){
+export function  mergeOptions(parent, child){
     let options = {}
     for(let key in parent){
         mergeField(key)
