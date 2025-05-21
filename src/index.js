@@ -8,7 +8,7 @@ function Vue(options) {
 }
 initMixin(Vue) //初始化数据
 lifecycleMixin(Vue) //初始化生命周期
-
+console.log(aaa)
 renderMixin(Vue) //添加_render
 
 // 全局方法 Vuemixin Vue.component Vue.extend
