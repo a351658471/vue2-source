@@ -1,14 +1,13 @@
-import { initGlobApi } from "./global-api/index.js";
-import initMixin from "./init";
-import {lifecycleMixin} from "./lifecycle";
-import { renderMixin } from "./vnode/index.js";
+import { initGlobApi } from "./global-api/index.js"
+import initMixin from "./init"
+import { lifecycleMixin } from "./lifecycle"
+import { renderMixin } from "./vnode/index.js"
 
-function Vue(options){
-  this._init(options)
+function Vue(options) {
+    this._init(options)
 }
 initMixin(Vue) //初始化数据
-
-lifecycleMixin(Vue)//初始化生命周期
+lifecycleMixin(Vue) //初始化生命周期
 
 renderMixin(Vue) //添加_render
 
