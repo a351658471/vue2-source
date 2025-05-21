@@ -1,7 +1,7 @@
-import { initGlobApi } from "./global-api/index.js"
-import initMixin from "./init"
-import { lifecycleMixin } from "./lifecycle"
-import { renderMixin } from "./vnode/index.js"
+import { initGlobApi } from './global-api/index.js'
+import initMixin from './init'
+import { lifecycleMixin } from './lifecycle'
+import { renderMixin } from './vnode/index.js'
 
 function Vue(options) {
     this._init(options)
